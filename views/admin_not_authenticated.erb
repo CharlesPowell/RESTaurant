@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>RESTaurant</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+  </head>
+  <body>
+
+    <h2>Managers Only</h2>
+
+    <a href="/">Click here if NON-Manager</a>
+
+    <form action="/sessions" method="post">
+      <input type="text" name="username" placeholder='...username'>
+      <input type="text" name="password" placeholder='...password'>
+      <input type="submit" value="Log-In">
+    </form>
+
+
+
+    <!-- ****** JS Libraries ****** -->
+      <script src='/scripts/lib/jquery.js'></script>
+      <script src='/scripts/lib/underscore.js'></script>
+      <script src='/scripts/lib/backbone.js'></script>
+
+      <!-- ****** Backbone Models ****** -->
+      <script src='/scripts/models/FoodModel.js'></script>
+      <script src='/scripts/models/PartyModel.js'></script>
+
+      <!-- ****** Backbone Collection ****** -->
+      <script src='/scripts/collections/FoodCollection.js'></script>
+      <script src='/scripts/collections/PartyCollection.js'></script>
+
+      <!-- ****** Backbone Views ****** -->
+      <script src='/scripts/views/FoodView.js'></script>
+      <script src='/scripts/views/PartyView.js'></script>
+      <script src='/scripts/views/GeneralListView.js'></script>
+
+      <!-- ****** JS Application ****** -->
+      <script src='/scripts/app.js'></script>
+    </body>
+</html>

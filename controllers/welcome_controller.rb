@@ -16,7 +16,7 @@ class WelcomeController < Sinatra::Base
     if current_user
       erb :admin_authenticated
     else
-      erb :admin_non_authenticated
+      erb :admin_not_authenticated
     end
   end
 

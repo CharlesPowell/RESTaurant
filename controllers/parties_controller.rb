@@ -63,7 +63,7 @@ class PartiesController < Sinatra::Base
 
   put '/:id/checkout' do
     party = Party.find(params[:id].to_i)
-    party.update(payed: true)
+    party.update(paid: true)
     content_type :json
     party.to_json
   end
