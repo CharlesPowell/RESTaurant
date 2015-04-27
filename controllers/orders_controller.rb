@@ -24,23 +24,21 @@ class OrdersController < Sinatra::Base
     end
 
     post '/' do
-      order = Order.create(params[:order])
-      party = Party.find_by(id: params[:party_id])
-      puts party
+      order = Order.create(order_params)
       content_type :json
       order.to_json
     end
 
     put '/:id' do
       order = Order.find(params[:id].to_i)
-      order.update(params[:order])
+      order.update(order_params)
       content_type :json
       order.to_json
     end
 
     patch '/:id' do
       order = Order.find(params[:id].to_i)
-      order.update(params[:order])
+      order.update(order_params)
       content_type :json
       order.to_json
     end

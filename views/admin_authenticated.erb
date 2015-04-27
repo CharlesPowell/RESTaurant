@@ -20,6 +20,12 @@
       <input type="submit" value='log-out'>
     </form>
 
+    <form action="/api/foods" method="post">
+      <input type="text" name="food[name]" placeholder="name...">
+      <input type="text" name="food[price]" placeholder="price...">
+      <input type="submit" value="add food">
+    </form>
+
     <!-- ****** JS Libraries ****** -->
       <script src='/scripts/lib/jquery.js'></script>
       <script src='/scripts/lib/underscore.js'></script>

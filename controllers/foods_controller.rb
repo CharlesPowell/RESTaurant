@@ -25,26 +25,30 @@ class FoodsController < Sinatra::Base
   end
 
   post '/' do
-    food = Food.create(params[:food])
+    authenticate_api!
+    food = Food.create(food_params)
     content_type :json
     food.to_json
   end
 
   put '/:id' do
+    authenticate_api!
     food = Food.find(params[:id].to_i)
-    food.update(params[:food])
+    food.update(food_params)
     content_type :json
     food.to_json
   end
 
   patch '/:id' do
+    authenticate_api!
     food = Food.find(params[:id].to_i)
-    food.update(params[:food])
+    food.update(food_params)
     content_type :json
     food.to_json
   end
 
   delete '/:id' do
+    authenticate_api!
     food = Food.find(params[:id].to_i)
     food.destroy
   end
