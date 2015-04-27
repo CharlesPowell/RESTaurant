@@ -1,30 +1,27 @@
 
 var app = {};
 
-app.PartyModel = Backbone.Model.extend({});
-app.OrderModel = Backbone.Model.extend({});
-app.FoodModel = Backbone.Model.extend({});
 
 app.PartyCollection = Backbone.Collection.extend({
-  model: PartyModel,
+  model: app.PartyModel,
   url: '/api/parties'
 })
 
 app.OrderCollection = Backbone.Collection.extend({
-  model: OrderModel,
+  model: app.OrderModel,
   url: '/api/orders'
 })
 
 app.FoodCollection = Backbone.Collection.extend({
-  model: FoodModel,
+  model: app.FoodModel,
   url: '/api/foods'
 })
 
 $(document).ready(function(){
 
-  app.partyList = new PartyCollection();
-  app.orderList = new OrderCollection();
-  app.foodList = new FoodCollection();
+  app.partyList = new app.PartyCollection();
+  app.orderList = new app.OrderCollection();
+  app.foodList = new app.FoodCollection();
   app.partyList.fetch();
   app.orderList.fetch();
   app.foodList.fetch();
