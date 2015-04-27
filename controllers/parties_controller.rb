@@ -10,58 +10,58 @@ class PartiesController < Sinatra::Base
     body_data = body_data['party'] || body_data
   end
   # ***** Routes *****
-  
-  get '/api/parties' do
+
+  get '/' do
     parties = Party.all
     content_type :json
     parties.to_json
   end
 
-  get '/api/parties/:id' do
+  get '/:id' do
     party = Party.find(params[:id].to_i)
     content_type :json
     party.to_json(include: :orders)
   end
 
-  post '/api/parties' do
+  post '/' do
     party = Party.create(params[:party])
     content_type :json
     party.to_json
   end
 
-  put '/api/parties/:id' do
+  put '/:id' do
     party = Party.find(params[:id].to_i)
     party.update(params[:party])
     content_type :json
     party.to_json
   end
 
-  patch '/api/parties/:id' do
+  patch '/:id' do
     party = Party.find(params[:id].to_i)
     party.update(params[:party])
     content_type :json
     party.to_json
   end
 
-  delete '/api/parties/:id' do
+  delete '/:id' do
     party = Party.find(params[:id].to_i)
     party.destroy
   end
 
-  get '/api/parties/:id/receipt' do
+  get '/:id/receipt' do
     party = Party.find(params[:id].to_i)
 
     #File.write('/path/to/file', 'Some glorious content')
   end
 
-  patch '/api/parties/:id/checkout' do
+  patch '/:id/checkout' do
     party = Party.find(params[:id].to_i)
     party.update(payed: true)
     content_type :json
     party.to_json
   end
 
-  put '/api/parties/:id/checkout' do
+  put '/:id/checkout' do
     party = Party.find(params[:id].to_i)
     party.update(payed: true)
     content_type :json
