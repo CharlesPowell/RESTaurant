@@ -5,12 +5,14 @@ app.PartyView = Backbone.View.extend({
     this.listenTo(this.model,'change', this.render);
     this.listenTo(this.model,'delete', this.remove);
   },
-  template: _.template("<h3><%=name %></h3>"),
   //value=<%= id%>
-  tagName: "div",
+  tagName: "option",
   className: 'party',
+  //attributes: {value: this.model.id},
   render: function(){
-    this.$el.html( this.template( this.model.attributes ) )
+    this.$el.prop("value", this.model.attributes.id);
+    this.$el.html(this.model.attributes.name);
+    //this.$el.html( this.template( this.model.attributes ) )
     //this.renderPartyList();
     return this;
   },

@@ -8,3 +8,7 @@ body {
 #food-list{
   color: white;
 }
+
+.food-selected{
+  background-color:red;
+}

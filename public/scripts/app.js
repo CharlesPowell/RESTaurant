@@ -18,10 +18,25 @@ $(document).ready(function(){
     el: $('#party-list')
   });
 
-
-
-
   app.partyList.fetch();
   app.foodList.fetch();
+
+  $("#place-order").click(function(){
+
+    party_id = parseInt($('#party-list').val());
+    food_id = app.foodSelection.attributes.id;
+    appData = {order: {party_id: party_id, food_id: food_id}};
+    console.log(appData);
+    $.ajax({
+      url: "/api/orders",
+      method: 'post',
+      data: appData,
+      success: function(){
+        console.log("Success!");
+      }
+    })
+
+  });
+
 
 })

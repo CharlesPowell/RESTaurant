@@ -4,6 +4,7 @@ class OrdersController < Sinatra::Base
   # ***** Helpers *****
   def order_params
     return params[:order] if params[:order]
+    return params['order'] if params['order']
     body_data = {}
     @request_body ||= request.body.read.to_s
     body_data = (JSON(@request_body)) unless @request_body.empty?
