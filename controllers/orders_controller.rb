@@ -11,6 +11,7 @@ class OrdersController < Sinatra::Base
     body_data = body_data['order'] || body_data
   end
 
+
   # ***** Routes *****
     get '/' do
       orders = Order.all
@@ -26,6 +27,10 @@ class OrdersController < Sinatra::Base
 
     post '/' do
       order = Order.create(order_params)
+      food = Food.find(order_params['food_id'])
+      party = Party.find(order_params['party_id'])
+      total = party.total + food.price
+      party.update({total: total})
       content_type :json
       order.to_json
     end

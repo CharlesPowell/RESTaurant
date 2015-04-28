@@ -10,5 +10,5 @@ body {
 }
 
 .food-selected{
-  background-color:red;
+  border: solid white;
 }

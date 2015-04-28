@@ -52,10 +52,14 @@ namespace :db do
     parties = Party.all
     foods = Food.all
     rand(10..35).times do |num|
+      sampleParty = parties.sample
+      sampleFood = foods.sample
       Order.create({
-        party_id: parties.sample.id,
-        food_id: foods.sample.id
+        party_id: sampleParty.id,
+        food_id: sampleFood.id
       })
+      temp = sampleParty.total + sampleFood.price
+      sampleParty.update(total: temp)
     end
 
   end # task :junk_data
