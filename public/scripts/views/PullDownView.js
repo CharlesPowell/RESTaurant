@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.ListView = Backbone.View.extend({
+app.PullDownView = Backbone.View.extend({
   initialize: function(options){
     this.modelView = options.modelView;
     this.listenTo(this.collection,'sync', this.render);

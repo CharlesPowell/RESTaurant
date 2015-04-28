@@ -42,7 +42,9 @@ namespace :db do
     rand(5..15).times do |num|
       Party.create({
         size: rand(3..7),
-        payed: false
+        payed: false,
+        name: Faker::Name.name,
+        total: 0
       })
     end
 
@@ -51,8 +53,8 @@ namespace :db do
     foods = Food.all
     rand(10..35).times do |num|
       Order.create({
-        party: parties.sample,
-        food: foods.sample
+        party_id: parties.sample.id,
+        food_id: foods.sample.id
       })
     end
 
