@@ -1,5 +1,7 @@
 var app = app || {};
 
+
+
 $(document).ready(function(){
 
   app.partyList = new app.PartyCollection();
@@ -7,7 +9,7 @@ $(document).ready(function(){
 
 
   app.foodListView = new app.ListView({
-    modelView: app.FoodView,
+    modelView: app.MenuFoodView,
     collection: app.foodList,
     el: $('#food-list')
   });
@@ -20,6 +22,31 @@ $(document).ready(function(){
 
   app.partyList.fetch();
   app.foodList.fetch();
+
+  $("#party-list").change(function(){
+
+    temp = "/api/parties/" + $("#party-list").val()
+    $.ajax({
+      method: 'get',
+      url: temp,
+      success: function(data){
+        $('#order-list').empty();
+        for(var i = 0; i < data.orders.length; i++){
+
+          food_id = data.orders[i].food_id
+          obj = _.find(app.foodList.models, function(obj) { return obj.id == food_id });
+          orderFoodView = new app.OrderFoodView({
+            model: obj,
+            el: $('#order-list')
+          })
+          orderFoodView.render();
+          console.log(obj.id)
+        }
+      }
+
+    })
+
+  })
 
   $("#place-order").click(function(){
 

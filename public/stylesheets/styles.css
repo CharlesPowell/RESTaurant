@@ -8,7 +8,29 @@ body {
 #food-list{
   color: white;
 }
+#order-list{
+  color: white
+}
 
 .food-selected{
   border: solid white;
+}
+
+
+.column{
+  background-color: black;
+  width: 45%;
+  height: 90%;
+
+}
+
+#menu-column{
+  float: left;
+  position: relative;
+
+}
+
+#party-column{
+  float: left;
+  position: relative;
 }

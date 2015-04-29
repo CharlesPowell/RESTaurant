@@ -7,22 +7,26 @@
     <h1>Welcome to VARCHAR(255)</h1>
     <h2>We don't accept analog coin currency</h2>
     <h2>We don't split checks</h2>
-    <h2></h2>
 
 
-
-    <select class="pull-down" id = 'party-list'>
-    </select>
-
-
-    <input type="button" value="Order" id = "place-order">
-    <input type="button" value="Check" id = "check-out">
-
-    <ul class='list-view' id='food-list'>
-
-    </ul>
+    <div>
+      <select class="pull-down" id = 'party-list'></select>
+      <input type="button" value="Order" id = "place-order">
+      <input type="button" value="Check" id = "check-out">
+    </div>
 
 
+    <div class="column" id = 'menu-column'>
+      <ul class='list-view' id='food-list'>
+
+      </ul>
+    </div>
+
+    <div class="column" id = 'party-column'>
+      <ul class='list-view' id='order-list'>
+
+      </ul>
+    </div>
 
 
     <!-- ****** JS Libraries ****** -->
@@ -33,18 +37,23 @@
       <!-- ****** Backbone Models ****** -->
       <script src='/scripts/models/FoodModel.js'></script>
       <script src='/scripts/models/PartyModel.js'></script>
+      <script src='/scripts/models/OrderModel.js'></script>
 
       <!-- ****** Backbone Collection ****** -->
       <script src='/scripts/collections/FoodCollection.js'></script>
       <script src='/scripts/collections/PartyCollection.js'></script>
+      <script src='/scripts/collections/OrderCollection.js'></script>
 
       <!-- ****** Backbone Views ****** -->
-      <script src='/scripts/views/FoodView.js'></script>
+      <script src='/scripts/views/MenuFoodView.js'></script>
+      <script src='/scripts/views/OrderFoodView.js'></script>
       <script src='/scripts/views/PartyView.js'></script>
+      <script src='/scripts/views/OrderView.js'></script>
       <script src='/scripts/views/ListView.js'></script>
       <script src='/scripts/views/PullDownView.js'></script>
 
       <!-- ****** JS Application ****** -->
       <script src='/scripts/app.js'></script>
+
     </body>
 </html>
