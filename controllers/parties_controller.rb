@@ -1,6 +1,6 @@
 class PartiesController < Sinatra::Base
   enable  :sessions
-
+  require 'date'
   # ***** Helpers *****
   def party_params
     return params[:party] if params[:party]
@@ -50,8 +50,15 @@ class PartiesController < Sinatra::Base
 
   get '/:id/receipt' do
     party = Party.find(params[:id].to_i)
-
-    #File.write('/path/to/file', 'Some glorious content')
+    total = party.total.to_s
+    name = party.name.to_s
+    date = Date.today.to_s
+    id = party.id.to_s
+    text = "Name: #{name} \nDate: #{date} \nTotal: #{total}\nThanks for visiting VARCHAR(255)"
+    file =  './receipts/' + id + ".txt"
+    File.write(file, text)
+    content_type :json
+    party.to_json
   end
 
   patch '/:id/checkout' do

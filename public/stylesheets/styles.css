@@ -11,17 +11,22 @@ body {
 #order-list{
   color: white
 }
-
+ul{
+  list-style-type: none;
+}
+.food{
+  border: dashed white;
+}
 .food-selected{
   border: solid white;
 }
-
-
 .column{
   background-color: black;
   width: 45%;
   height: 90%;
+}
 
+.select-food{
 }
 
 #menu-column{

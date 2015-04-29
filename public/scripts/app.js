@@ -28,6 +28,7 @@ app.renderOrder = function(){
 
 $(document).ready(function(){
 
+
   app.partyList = new app.PartyCollection();
   app.foodList = new app.FoodCollection();
 
@@ -70,6 +71,5 @@ $(document).ready(function(){
     })
 
   });
-
 
 })
