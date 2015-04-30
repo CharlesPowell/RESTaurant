@@ -67,6 +67,8 @@ $(document).ready(function(){
       success: function(){
         console.log("Success!");
         app.renderOrder();
+        $(".food-selected").removeClass('food-selected');
+        $(".party-selected").removeClass('party-selected');
       }
     })
 
