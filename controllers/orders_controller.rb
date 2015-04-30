@@ -1,5 +1,6 @@
 class OrdersController < Sinatra::Base
   enable  :sessions
+  require 'time'
 
   # ***** Helpers *****
   def order_params

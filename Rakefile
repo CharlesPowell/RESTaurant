@@ -1,6 +1,7 @@
 # ***** GEMS *****
 require 'bundler/setup'
 Bundler.require
+require 'time'
 
 # ***** CONNECTION *****
 ActiveRecord::Base.establish_connection(
@@ -56,7 +57,7 @@ namespace :db do
       sampleFood = foods.sample
       Order.create({
         party_id: sampleParty.id,
-        food_id: sampleFood.id
+        food_id: sampleFood.id,
       })
       temp = sampleParty.total + sampleFood.price
       sampleParty.update(total: temp)

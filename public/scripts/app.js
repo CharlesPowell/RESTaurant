@@ -24,6 +24,18 @@ app.renderOrder = function(){
 
 }
 
+app.updateTime = function(){
+
+      for(var i = 0; i < app.orderList.models.length; i++){
+          if(  app.orderList.models[i].attributes.timeleft != 0){
+            app.orderList.models[i].attributes.timeleft --;
+          }
+          if(app.orderList.models[i].attributes.timeleft <= 90){
+
+          }
+          app.orderList.models[i].save;
+      }
+}
 
 
 $(document).ready(function(){
@@ -31,12 +43,20 @@ $(document).ready(function(){
 
   app.partyList = new app.PartyCollection();
   app.foodList = new app.FoodCollection();
+  app.orderList = new app.OrderCollection();
 
 
-  app.foodListView = new app.ListView({
+  app.foodListView = new app.OrderListView({
     modelView: app.MenuFoodView,
     collection: app.foodList,
     el: $('#food-list')
+  });
+
+  app.kitchenOrders = new app.OrderListView({
+    modelView: app.OrderView,
+    collection: app.orderList,
+    el: $('#kitchen-list')
+
   });
 
   app.partyPullDown = new app.PullDownView({
@@ -47,6 +67,8 @@ $(document).ready(function(){
 
   app.partyList.fetch();
   app.foodList.fetch();
+  app.orderList.fetch();
+
 
   $("#party-list").change(function(){
     app.renderOrder();
@@ -73,5 +95,7 @@ $(document).ready(function(){
     })
 
   });
+
+  setInterval(app.updateTime, 1000);
 
 })

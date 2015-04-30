@@ -20,6 +20,9 @@ ul{
 .food-selected{
   border: solid white;
 }
+.urgent{
+  background-color: red;
+}
 .column{
   background-color: black;
   width: 45%;

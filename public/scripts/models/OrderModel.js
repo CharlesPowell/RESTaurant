@@ -1,3 +1,6 @@
 var app = app || {};
 
-app.OrderModel = Backbone.Model.extend({});
+app.OrderModel = Backbone.Model.extend({
+
+
+});

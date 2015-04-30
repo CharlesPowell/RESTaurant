@@ -1,3 +1,5 @@
 var app = app || {};
 
-app.PartyModel = Backbone.Model.extend({});
+app.PartyModel = Backbone.Model.extend({
+
+});

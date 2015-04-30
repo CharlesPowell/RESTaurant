@@ -19,5 +19,10 @@ class WelcomeController < Sinatra::Base
       erb :admin_not_authenticated
     end
   end
+  get '/kitchen' do
+    erb :kitchen
+  end
+
+
 
 end
