@@ -32,6 +32,7 @@ class OrdersController < Sinatra::Base
       party = Party.find(order_params['party_id'])
       total = party.total + food.price
       party.update({total: total})
+      order.update({created: Time.new.to_i})
       content_type :json
       order.to_json
     end

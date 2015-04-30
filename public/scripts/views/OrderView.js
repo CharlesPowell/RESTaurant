@@ -5,8 +5,9 @@ app.OrderView = Backbone.View.extend({
     this.listenTo(this.model,'change', this.render);
     this.listenTo(this.model,'delete', this.remove);
   },
-  //____Time Left = <%= timeLeft%>
-  template: _.template('Food:<%= food_id %>__Party:<%= party_id %>__Time Left = <%= timeleft%>'),
+  //__Time Left = <%= timeLeft%>
+  //__Created = <%= created%>
+  template: _.template('Food:<%= food_id %>__Party:<%= party_id %>'),
   tagName: 'li',
   className: 'order',
   render: function(){

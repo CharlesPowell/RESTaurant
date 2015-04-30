@@ -58,6 +58,7 @@ namespace :db do
       Order.create({
         party_id: sampleParty.id,
         food_id: sampleFood.id,
+        created: Time.new.to_i
       })
       temp = sampleParty.total + sampleFood.price
       sampleParty.update(total: temp)

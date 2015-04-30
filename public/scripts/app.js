@@ -31,6 +31,7 @@ $(document).ready(function(){
 
   app.partyList = new app.PartyCollection();
   app.foodList = new app.FoodCollection();
+  app.orderList = new app.OrderCollection();
 
 
   app.foodListView = new app.ListView({
@@ -44,22 +45,41 @@ $(document).ready(function(){
     collection: app.partyList,
     el: $('#party-list')
   });
+  app.kitchenOrders = new app.OrderListView({
+    modelView: app.OrderView,
+    collection: app.orderList,
+    el: $("#kitchen-orders")
+
+  })
+
 
   app.partyList.fetch();
   app.foodList.fetch();
+  app.orderList.fetch();
 
   $("#party-list").change(function(){
     app.renderOrder();
   })
 
+  $("#check-out").click(function(){
+      party_id = parseInt($('#party-list').val());
 
+      checkUrl = "/api/parties/"+ String(party_id) + "/receipt";
+      console.log(party_id);
+      $.ajax({
+        url: checkUrl,
+        method: 'get',
+        success: function(){
+          console.log("Success!");
+        }
+      })
+    });
 
   $("#place-order").click(function(){
 
     party_id = parseInt($('#party-list').val());
     food_id = app.foodSelection.attributes.id;
     appData = {order: {party_id: party_id, food_id: food_id}};
-    console.log(appData);
     $.ajax({
       url: "/api/orders",
       method: 'post',

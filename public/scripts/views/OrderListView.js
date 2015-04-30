@@ -13,7 +13,30 @@ app.OrderListView = Backbone.View.extend({
       subView.render();
       this.$el.append( subView.$el );
       subView.delegateEvents();
+
+      var startTimer = models[i].get('created')
+      var timeDisplay = this.renderTime(startTimer);
+      this.$el.append( timeDisplay );
     }
     return this;
+  },
+  renderTime: function(startTimer){
+    var timerDisplay = $('<p>');
+
+    setInterval(function(){
+      now = Math.floor(Date.now()/1000);
+      var timeLeft = 300 + (startTimer - now);
+      timerDisplay.text( timeLeft );
+
+      if (timeLeft<0){
+        timerDisplay.css({backgroundColor: 'red'});
+      } else if (timeLeft<120){
+        timerDisplay.css({backgroundColor: 'yellow',color: 'black'});
+      } else {
+        timerDisplay.css({backgroundColor: 'green', color: 'black'});
+      }
+    }, 1000)
+
+    return timerDisplay;
   }
 });
